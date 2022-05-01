@@ -10,6 +10,7 @@ import NotFound from "./Components/404NotFound/NotFound";
 import Blog from "./Components/Blog/Blog";
 import Inventory from "./Components/Inventory/Inventory";
 import RequiredAuth from "./Components/Required/RequiredAuth";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
@@ -18,9 +19,15 @@ function App() {
       <div className="max-w-7xl mx-auto"></div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <RequiredAuth>
-          <Route path="/inventory" element={<Inventory />} />
-        </RequiredAuth>
+        <Route
+          path="/inventory"
+          element={
+            <RequiredAuth>
+              <Inventory />
+            </RequiredAuth>
+          }
+        />
+
         <Route path="/blog" element={<Blog />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
@@ -28,6 +35,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }

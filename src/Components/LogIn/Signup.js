@@ -47,7 +47,7 @@ const Signup = () => {
             <div className="h-32 md:h-auto md:w-1/2 bg-gray-700">
               <div className="m-20 pt-14">
                 <h1 className="mb-4 text-2xl font-bold text-center text-white">
-                  Social Media Login
+                  Social Login
                 </h1>
 
                 <SocialLogin></SocialLogin>

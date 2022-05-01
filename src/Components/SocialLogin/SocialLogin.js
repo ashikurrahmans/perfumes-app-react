@@ -4,14 +4,17 @@ import {
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import auth from "./../../firebase.init";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
   const navigate = useNavigate();
   const [signInWithGoogle, user] = useSignInWithGoogle(auth);
   const [signInWithFacebook, fbuser] = useSignInWithFacebook(auth);
+
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
   if (user || fbuser) {
-    navigate("/");
+    navigate(from, { replace: true });
   }
 
   return (
