@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 const AddItem = () => {
   const handleProduct = (e) => {
     e.preventDefault();
@@ -19,7 +17,7 @@ const AddItem = () => {
       quantity,
       price,
     };
-    fetch("https://jsonplaceholder.typicode.com/posts", {
+    fetch("https://localhost:4000/additem", {
       method: "POST",
       body: JSON.stringify(product),
       headers: {
@@ -81,7 +79,7 @@ const AddItem = () => {
                         name="productDescription"
                         rows="12"
                         cols="120"
-                        maxlength="200"
+                        maxLength="200"
                         className="border-2"
                       ></textarea>
                     </div>
@@ -96,7 +94,7 @@ const AddItem = () => {
                       <select
                         id="country"
                         name="country"
-                        autocomplete="country"
+                        autoComplete="country"
                         className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       >
                         <option>United States</option>
