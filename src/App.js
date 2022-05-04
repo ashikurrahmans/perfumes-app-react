@@ -11,6 +11,7 @@ import Blog from "./Components/Blog/Blog";
 import Inventory from "./Components/Inventory/Inventory";
 import RequiredAuth from "./Components/Required/RequiredAuth";
 import Footer from "./Components/Footer/Footer";
+import AddItem from "./Components/Products/AddItem";
 
 function App() {
   return (
@@ -33,6 +34,14 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/addItem"
+          element={
+            <RequiredAuth>
+              <AddItem />
+            </RequiredAuth>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer></Footer>

@@ -122,7 +122,7 @@ const Navbar = () => {
                       Manage Items
                     </NavLink>
                     <NavLink
-                      to=""
+                      to="/additem"
                       className="py-4 px-3 text-lg text-white font-bold"
                     >
                       Add Item
