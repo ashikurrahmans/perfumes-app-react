@@ -4,28 +4,31 @@ const AddItem = () => {
     const productName = e.target.productName.value;
     const email = e.target.email.value;
     const productDesc = e.target.productDescription.vale;
-    const country = e.target.country.value;
     const supplier = e.target.supplier.value;
     const quantity = e.target.quantity.value;
     const price = e.target.price.value;
+    const image = e.target.image.value;
     const product = {
       productName,
       email,
       productDesc,
-      country,
       supplier,
       quantity,
       price,
+      image,
     };
-    fetch("https://localhost:4000/additem", {
+    fetch("http://localhost:5000/additem", {
       method: "POST",
-      body: JSON.stringify(product),
       headers: {
-        "Content-type": "application/json; charset=UTF-8",
+        "Content-type": "application/json",
       },
+      body: JSON.stringify(product),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        console.log();
+      });
+    e.target.reset();
   };
 
   return (
@@ -89,18 +92,14 @@ const AddItem = () => {
                         htmlFor="country"
                         className="block text-sm font-medium text-gray-700"
                       >
-                        Country / Region
+                        Image Link
                       </label>
-                      <select
-                        id="country"
-                        name="country"
+                      <input
+                        id="image"
+                        name="image"
                         autoComplete="country"
                         className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      >
-                        <option>United States</option>
-                        <option>Canada</option>
-                        <option>Mexico</option>
-                      </select>
+                      ></input>
                     </div>
 
                     <div className="col-span-6 sm:col-span-3">
