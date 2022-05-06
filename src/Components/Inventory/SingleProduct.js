@@ -1,67 +1,121 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-const SingleProduct = (props) => {
-  const { image, productName, supplier, quantity, price } = props.item;
+const SingleProduct = () => {
+  const [products, setProducts] = useState([]);
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  const url = `http://localhost:5000/inventory/${id}`;
+
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
+
+  // const DeleteProduct = (id) => {
+  //   const proceed = window.confirm("Are you ready to delete?");
+  //   if (proceed) {
+  //     fetch(url, {
+  //       method: "DELETE",
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         console.log(data);
+  //         const remaining = products.filter((product) => product._id !== id);
+  //         setProducts(remaining);
+  //         navigate("/manageitem");
+  //       });
+  //   }
+  // };
+
+  const handleInventory = () => {
+    navigate("/manageitem");
+  };
 
   return (
-    // <div>
-    //   <div className="md:flex shadow-lg md:mx-auto my-5 max-w-lg md:max-w-2xl h-64">
-    //     <img
-    //       className="h-full w-full md:w-36 object-cover rounded-lg rounded-r-none pb-5/6"
-    //       src={image}
-    //       alt="bag"
-    //     />
-    //     <div className="w-full md:w-2/3 px-4 py-4 bg-white rounded-lg">
-    //       <div className="flex items-center">
-    //         <h2 className="text-xl text-gray-800 font-medium mr-auto">
-    //           {productName}
-    //         </h2>
-    //       </div>
-    //       <p className="text-gray-800 font-semibold tracking-tighter mt-4">
-    //         Price : ${price}
-    //       </p>
-    //       <p className="text-gray-800 font-semibold tracking-tighter mt-4">
-    //         Quantity : {quantity}
-    //       </p>
-
-    //       <p className="text-gray-800 font-semibold tracking-tighter mt-4">
-    //         Suplier : {supplier}
-    //       </p>
-
-    //       <div className="flex items-center justify-end mt-4 top-auto">
-    //         <button className="bg-red-600 text-white px-4 py-2 rounded mr-auto hover:underline">
-    //           Delete
-    //         </button>
-    //         <button className=" bg-gray-200 text-blue-600 px-2 py-2 rounded-md mr-2">
-    //           Edit
-    //         </button>
-    //         <button className=" bg-blue-600 text-gray-200 px-2 py-2 rounded-md ">
-    //           Publish
-    //         </button>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
     <div>
-      <div className="flex bg-gray-200 ">
-        <div>
-          <img
-            className="w-2/3 h-full object-cover rounded-lg rounded-r-none"
-            src={image}
-            alt={productName}
-          />
+      <div className="min-w-screen min-h-screen bg-indigo-700 flex items-center p-5 lg:p-10 overflow-hidden relative">
+        <div className="w-full max-w-6xl rounded bg-white shadow-xl p-10 lg:p-20 mx-auto text-gray-800 relative md:text-left">
+          <div className="md:flex items-center -mx-10">
+            <div className="w-full md:w-1/2 px-10 mb-10 md:mb-0">
+              <div className="relative">
+                <img
+                  src={products.image}
+                  className="w-full relative z-10 "
+                  alt={products.productName}
+                />
+                <div className="border-4 border-yellow-200 absolute top-10 bottom-10 left-10 right-10 z-0"></div>
+              </div>
+            </div>
+            <div className="w-full md:w-1/2 px-10">
+              <div className="mb-10">
+                <h1 className="font-bold uppercase text-2xl mb-5">
+                  {products.productName}
+                </h1>
+                <div className="inline-block align-bottom mr-5">
+                  <span className="text-2xl leading-none align-baseline">
+                    Price : $
+                  </span>
+                  <span className="font-bold text-2xl leading-none align-baseline">
+                    {products.price}
+                  </span>
+                </div>
+                <div className="mb-4 mt-4">
+                  <h1 className=" text-sm">Quantity : {products.quantity}</h1>
+                  <h1 className=" text-sm ">Supplier : {products.supplier}</h1>
+                </div>
+                {/* <p className="text-sm">{products.description}</p> */}
+              </div>
+
+              <div>
+                <div className="inline-block align-bottom">
+                  <button className="bg-yellow-300 opacity-75 hover:opacity-100 text-yellow-900 hover:text-gray-900 rounded-full px-10 py-2 font-semibold">
+                    Delivered
+                  </button>
+                  <input
+                    required
+                    type="number"
+                    className="m-4 w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                    placeholder="Quantity"
+                  />
+                  <button className="ml-2 text-white bg-green-400 opacity-75 hover:opacity-100 text-yellow-900 hover:text-gray-900 rounded-full px-10 py-2 font-semibold">
+                    Add Quantity
+                  </button>
+                  {/* <button
+                    onClick={() => DeleteProduct(products._id)}
+                    className="mt-5 ml-2 bg-red-300 opacity-75 hover:opacity-100 text-yellow-900 hover:text-gray-900 rounded-full px-10 py-2 font-semibold"
+                  >
+                    Delete
+                  </button> */}
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={handleInventory}
+            className="mt-10 focus:outline-none text-white bg-indigo-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+          >
+            Manage Inventory
+          </button>
         </div>
-        <div className="px-4 py-4 rounded-lg">
-          <h2 className="text-xl text-gray-800 font-medium">{productName}</h2>
-          <h2 className="text-lg text-gray-800 font-medium">
-            Quantity : {quantity}
-          </h2>
-          <h2 className="text-lg text-gray-800 font-medium">
-            Quantity : {quantity}
-          </h2>
-          <h2 className="text-lg text-gray-800 font-medium">
-            Quantity : {quantity}
-          </h2>
+      </div>
+
+      <div className="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
+        <div>
+          <a
+            title="Buy me a beer"
+            href="https://www.buymeacoffee.com/scottwindon"
+            target="_blank"
+            className="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12"
+          >
+            <img
+              className="object-cover object-center w-full h-full rounded-full"
+              src="https://i.pinimg.com/originals/60/fd/e8/60fde811b6be57094e0abc69d9c2622a.jpg"
+            />
+          </a>
         </div>
       </div>
     </div>

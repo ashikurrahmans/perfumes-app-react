@@ -55,7 +55,7 @@ const Navbar = () => {
                   >
                     Home
                   </NavLink>
-                  <NavLink
+                  {/* <NavLink
                     to="/inventory"
                     className="py-4 px-3 text-lg text-gray-500 font-bold hover:text-green-500 transition duration-300"
                     style={({ isActive }) => {
@@ -67,7 +67,7 @@ const Navbar = () => {
                     }}
                   >
                     Inventory
-                  </NavLink>
+                  </NavLink> */}
                   <NavLink
                     to="/blog"
                     className="py-4 px-3 text-lg text-gray-500 font-bold hover:text-green-500 transition duration-300"
@@ -116,7 +116,7 @@ const Navbar = () => {
                 {user ? (
                   <>
                     <NavLink
-                      to=""
+                      to="/manageitem"
                       className="py-4 px-3 text-lg text-white font-bold "
                     >
                       Manage Items

@@ -12,6 +12,8 @@ import Inventory from "./Components/Inventory/Inventory";
 import RequiredAuth from "./Components/Required/RequiredAuth";
 import Footer from "./Components/Footer/Footer";
 import AddItem from "./Components/Products/AddItem";
+import SingleProduct from "./Components/Inventory/SingleProduct";
+import ManageItem from "./Components/Inventory/AfterLogin/ManageItem";
 
 //https://i.ibb.co/sqxmXjp/2.jpg
 
@@ -23,11 +25,27 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/inventory" element={<Inventory />} />
+        <Route
+          path="/inventory/:id"
+          element={
+            <RequiredAuth>
+              <SingleProduct />
+            </RequiredAuth>
+          }
+        />
         <Route path="/blog" element={<Blog />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/manageitem"
+          element={
+            <RequiredAuth>
+              <ManageItem />
+            </RequiredAuth>
+          }
+        />
         <Route
           path="/addItem"
           element={

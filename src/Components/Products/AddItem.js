@@ -3,7 +3,7 @@ const AddItem = () => {
     e.preventDefault();
     const productName = e.target.productName.value;
     const email = e.target.email.value;
-    const productDesc = e.target.productDescription.vale;
+    const productDesc = e.target.productDescription.value;
     const supplier = e.target.supplier.value;
     const quantity = e.target.quantity.value;
     const price = e.target.price.value;
