@@ -14,12 +14,6 @@ const ProductDetails = (props) => {
 
   const url = `http://localhost:5000/inventory/${id}`;
 
-  // useEffect(() => {
-  //   fetch(url)
-  //     .then((res) => res.json())
-  //     .then((data) => setProducts(data));
-  // }, []);
-
   const DeleteProduct = (id) => {
     const proceed = window.confirm("Are you ready to delete?");
     if (proceed) {
@@ -72,7 +66,7 @@ const ProductDetails = (props) => {
             </button>
             <button
               className="ml-2 bg-red-600 text-gray-200 px-2 py-2 rounded-md "
-              onClick={() => DeleteProduct(_id)}
+              onClick={() => DeleteProduct(id)}
             >
               Delete
             </button>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const SingleProduct = () => {
@@ -14,21 +14,12 @@ const SingleProduct = () => {
       .then((data) => setProducts(data));
   }, []);
 
-  // const DeleteProduct = (id) => {
-  //   const proceed = window.confirm("Are you ready to delete?");
-  //   if (proceed) {
-  //     fetch(url, {
-  //       method: "DELETE",
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         console.log(data);
-  //         const remaining = products.filter((product) => product._id !== id);
-  //         setProducts(remaining);
-  //         navigate("/manageitem");
-  //       });
-  //   }
-  // };
+  const quantityRef = useRef();
+  const handleQuantity = (e) => {
+    e.preventDefault();
+    const quantity = quantityRef.current.value;
+    const addingQuantity = parseInt(quantity) + parseInt(products.quantity);
+  };
 
   const handleInventory = () => {
     navigate("/manageitem");
@@ -76,11 +67,15 @@ const SingleProduct = () => {
                   </button>
                   <input
                     required
+                    ref={quantityRef}
                     type="number"
                     className="m-4 w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
                     placeholder="Quantity"
                   />
-                  <button className="ml-2 text-white bg-green-400 opacity-75 hover:opacity-100 text-yellow-900 hover:text-gray-900 rounded-full px-10 py-2 font-semibold">
+                  <button
+                    onClick={handleQuantity}
+                    className="ml-2 text-white bg-green-400 opacity-75 hover:opacity-100 text-yellow-900 hover:text-gray-900 rounded-full px-10 py-2 font-semibold"
+                  >
                     Add Quantity
                   </button>
                   {/* <button
