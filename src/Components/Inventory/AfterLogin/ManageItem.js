@@ -1,5 +1,6 @@
 import ProductDetails from "./../ProductDetails";
 import useProducts from "./../../Shared/useProducts";
+import Title from "../../Shared/Title";
 
 const Inventory = () => {
   const [products, setProducts] = useProducts([]);

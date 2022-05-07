@@ -4,6 +4,7 @@ import Hero from "./SingleComponents/Hero";
 import HomeProducts from "./SingleComponents/HomeProducts";
 import Newsletter from "./SingleComponents/Newsletter";
 import { useNavigate } from "react-router-dom";
+import Title from "../Shared/Title";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const Home = () => {
   };
   return (
     <div>
+      <Title title={"Home"}></Title>
       <Hero></Hero>
       <div className="container mx-auto">
         <HomeProducts></HomeProducts>

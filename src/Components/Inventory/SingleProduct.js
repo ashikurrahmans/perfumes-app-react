@@ -18,6 +18,7 @@ const SingleProduct = () => {
     e.preventDefault();
     const quantity = quantityRef.current.value;
     const addingQuantity = parseInt(quantity) + parseInt(products.quantity);
+    setProducts(addingQuantity);
   };
 
   const handleInventory = () => {

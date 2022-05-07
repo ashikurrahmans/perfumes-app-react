@@ -1,4 +1,5 @@
 import React from "react";
+import Title from "../Shared/Title";
 
 const Blog = () => {
   return (
@@ -118,6 +119,8 @@ const Blog = () => {
     // </div>
 
     <>
+      <Title title={"Blog"}></Title>
+
       <div className="w-4/5	mt-10 mx-auto">
         <div className="accordion" id="accordionExample ">
           <div className="accordion-item bg-white border border-gray-200">

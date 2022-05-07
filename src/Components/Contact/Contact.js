@@ -1,8 +1,10 @@
 import React from "react";
+import Title from "../Shared/Title";
 
 const Contact = () => {
   return (
     <div>
+      <Title title={"Contact"}></Title>
       <div className="w-full h-screen py-80 ">
         <div className="max-w-5xl mx-auto px-6 sm:px-6 lg:px-8 mb-12">
           <div className="bg-gray-500 w-full  rounded p-8 sm:p-12 -mt-72">

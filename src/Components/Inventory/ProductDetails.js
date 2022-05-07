@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Title from "./../Shared/Title";
 
 const ProductDetails = (props) => {
   const { _id, image, productName, supplier, quantity, price } = props.item;
@@ -31,6 +32,8 @@ const ProductDetails = (props) => {
   };
   return (
     <div className="bg-gray-100 mt-10">
+      <Title title={"Manage Items"}></Title>
+
       <div className="grid lg:grid-cols-2 md:grid-cols-2 col ">
         <div>
           <img

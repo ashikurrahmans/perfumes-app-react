@@ -15,6 +15,7 @@ import AddItem from "./Components/Products/AddItem";
 import SingleProduct from "./Components/Inventory/SingleProduct";
 import ManageItem from "./Components/Inventory/AfterLogin/ManageItem";
 import MyItems from "./Components/Inventory/AfterLogin/MyItems";
+import HomeProducts from "./Components/Home/SingleComponents/HomeProducts";
 
 function App() {
   return (
@@ -31,8 +32,7 @@ function App() {
               <SingleProduct />
             </RequiredAuth>
           }
-        />
-
+        />{" "}
         <Route path="/blog" element={<Blog />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />

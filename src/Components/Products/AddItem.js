@@ -1,3 +1,5 @@
+import Title from "../Shared/Title";
+
 const AddItem = () => {
   const handleProduct = (e) => {
     e.preventDefault();
@@ -33,6 +35,7 @@ const AddItem = () => {
 
   return (
     <div>
+      <Title title={"Add Your item"}></Title>
       <div className="mt-20 sm:mt-0 w-9/12 mx-auto">
         <div className="md:grid md:grid-cols-3 md:gap-6">
           <div className="mt-5 md:mt-0 md:col-span-2">
