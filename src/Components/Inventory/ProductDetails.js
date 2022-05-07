@@ -13,20 +13,22 @@ const ProductDetails = (props) => {
   const [products, setProducts] = useState([]);
   const { id } = useParams();
 
-  const url = `https://perfume-wirehouse.herokuapp.com/inventory/${id}`;
-
   const DeleteProduct = (id) => {
-    const proceed = window.confirm("Are you ready to delete?");
+    const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      fetch(url, {
+      fetch(`http://localhost:5000/inventory/${id}`, {
         method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
       })
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          const remaining = products.filter((product) => product._id !== id);
+          const remaining = products.filter((pd) => pd._id !== id);
+          console.log(remaining);
           setProducts(remaining);
-          navigate("/manageitem");
         });
     }
   };
@@ -69,7 +71,7 @@ const ProductDetails = (props) => {
             </button>
             <button
               className="ml-2 bg-red-600 text-gray-200 px-2 py-2 rounded-md "
-              onClick={() => DeleteProduct(id)}
+              onClick={() => DeleteProduct(_id)}
             >
               Delete
             </button>

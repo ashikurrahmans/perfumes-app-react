@@ -5,7 +5,9 @@ const useProducts = () => {
   useEffect(() => {
     fetch("https://perfume-wirehouse.herokuapp.com/inventory")
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => {
+        setProducts(data);
+      });
   }, []);
 
   return [products, setProducts];

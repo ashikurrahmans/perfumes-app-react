@@ -57,7 +57,7 @@ const SingleProduct = () => {
                   <h1 className=" text-sm">Quantity : {products.quantity}</h1>
                   <h1 className=" text-sm ">Supplier : {products.supplier}</h1>
                 </div>
-                <p className="text-sm">{products.productDesc.slice(0, 250)}</p>
+                <p className="text-sm">{products.productDesc?.slice(0, 250)}</p>
               </div>
 
               <div>
