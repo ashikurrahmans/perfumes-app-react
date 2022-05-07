@@ -78,12 +78,6 @@ const SingleProduct = () => {
                   >
                     Add Quantity
                   </button>
-                  {/* <button
-                    onClick={() => DeleteProduct(products._id)}
-                    className="mt-5 ml-2 bg-red-300 opacity-75 hover:opacity-100 text-yellow-900 hover:text-gray-900 rounded-full px-10 py-2 font-semibold"
-                  >
-                    Delete
-                  </button> */}
                 </div>
               </div>
             </div>
