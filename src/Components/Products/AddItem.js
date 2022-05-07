@@ -17,7 +17,7 @@ const AddItem = () => {
       price,
       image,
     };
-    fetch("http://localhost:5000/additem", {
+    fetch("https://perfume-wirehouse.herokuapp.com/additem", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -82,7 +82,6 @@ const AddItem = () => {
                         name="productDescription"
                         rows="12"
                         cols="120"
-                        maxLength="200"
                         className="border-2"
                       ></textarea>
                     </div>

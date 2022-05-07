@@ -12,7 +12,7 @@ const ProductDetails = (props) => {
   const [products, setProducts] = useState([]);
   const { id } = useParams();
 
-  const url = `http://localhost:5000/inventory/${id}`;
+  const url = `https://perfume-wirehouse.herokuapp.com/inventory/${id}`;
 
   const DeleteProduct = (id) => {
     const proceed = window.confirm("Are you ready to delete?");

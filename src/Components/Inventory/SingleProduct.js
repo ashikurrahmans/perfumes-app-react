@@ -5,8 +5,7 @@ const SingleProduct = () => {
   const [products, setProducts] = useState([]);
   const { id } = useParams();
   const navigate = useNavigate();
-
-  const url = `http://localhost:5000/inventory/${id}`;
+  const url = `https://perfume-wirehouse.herokuapp.com/inventory/${id}`;
 
   useEffect(() => {
     fetch(url)
@@ -57,7 +56,7 @@ const SingleProduct = () => {
                   <h1 className=" text-sm">Quantity : {products.quantity}</h1>
                   <h1 className=" text-sm ">Supplier : {products.supplier}</h1>
                 </div>
-                {/* <p className="text-sm">{products.description}</p> */}
+                <p className="text-sm">{products.productDesc.slice(0, 250)}</p>
               </div>
 
               <div>

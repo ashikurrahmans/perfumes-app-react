@@ -14,7 +14,7 @@ const AddItem = () => {
     const products = { name, supplier, quantity, img, body };
     console.log(products);
     // send data to the server
-    fetch("http://localhost:5000/products", {
+    fetch("https://perfume-wirehouse.herokuapp.com/products", {
       method: "POST",
       headers: {
         "content-type": "application/json",

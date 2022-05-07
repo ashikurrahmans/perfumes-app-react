@@ -16,8 +16,6 @@ import SingleProduct from "./Components/Inventory/SingleProduct";
 import ManageItem from "./Components/Inventory/AfterLogin/ManageItem";
 import MyItems from "./Components/Inventory/AfterLogin/MyItems";
 
-//https://i.ibb.co/sqxmXjp/2.jpg
-
 function App() {
   return (
     <div className="app">
