@@ -14,6 +14,7 @@ import Footer from "./Components/Footer/Footer";
 import AddItem from "./Components/Products/AddItem";
 import SingleProduct from "./Components/Inventory/SingleProduct";
 import ManageItem from "./Components/Inventory/AfterLogin/ManageItem";
+import MyItems from "./Components/Inventory/AfterLogin/MyItems";
 
 //https://i.ibb.co/sqxmXjp/2.jpg
 
@@ -33,6 +34,7 @@ function App() {
             </RequiredAuth>
           }
         />
+
         <Route path="/blog" element={<Blog />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
@@ -43,6 +45,14 @@ function App() {
           element={
             <RequiredAuth>
               <ManageItem />
+            </RequiredAuth>
+          }
+        />
+        <Route
+          path="/myitems"
+          element={
+            <RequiredAuth>
+              <MyItems />
             </RequiredAuth>
           }
         />

@@ -1,11 +1,9 @@
 import React from "react";
+import useProducts from "./../../Shared/useProducts";
 
-const Inventory = () => {
-  return (
-    <div>
-      <h2>My Item</h2>
-    </div>
-  );
+const MyItems = () => {
+  const [products, setProducts] = useProducts();
+  return <div>{}</div>;
 };
 
-export default Inventory;
+export default MyItems;
