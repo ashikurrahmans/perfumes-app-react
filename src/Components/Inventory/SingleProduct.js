@@ -17,14 +17,29 @@ const SingleProduct = () => {
   const handleQuantity = (e) => {
     e.preventDefault();
     const quantity = quantityRef.current.value;
-    const addingQuantity = parseInt(quantity) + parseInt(products.quantity);
-    setProducts(addingQuantity);
+    const addingQuantity = parseInt(quantity) + products.quantity;
+    const quanityUpdate = { addingQuantity };
+
+    // Update Products
+
+    fetch(`https://perfume-wirehouse.herokuapp.com/inventory/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(quanityUpdate),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("success", data);
+        setProducts(quanityUpdate);
+        e.target.reset();
+      });
   };
 
   const handleInventory = () => {
     navigate("/manageitem");
   };
-
   return (
     <div>
       <div className="min-w-screen min-h-screen bg-indigo-700 flex items-center p-5 lg:p-10 overflow-hidden relative">

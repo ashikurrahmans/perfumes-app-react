@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Title from "./../Shared/Title";
 
 const ProductDetails = (props) => {
-  const { _id, image, productName, supplier, quantity, price } = props.item;
+  const { _id, image, productName, supplier, quantity, price, productDesc } =
+    props.item;
   const navigate = useNavigate();
 
   const handleSingleProduct = (id) => {
@@ -25,7 +26,7 @@ const ProductDetails = (props) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          console.log(products);
           const remaining = products.filter((pd) => pd._id !== id);
           console.log(remaining);
           setProducts(remaining);
@@ -56,6 +57,7 @@ const ProductDetails = (props) => {
             <h2 className="text-sm text-gray-800 font-medium">
               Supplier : {supplier}
             </h2>
+            <p className="mt-3">{productDesc?.slice(0, 80)}</p>
           </div>
 
           <div className="flex mt-4 p-5">
