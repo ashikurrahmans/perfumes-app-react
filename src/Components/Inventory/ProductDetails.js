@@ -1,38 +1,35 @@
-import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Title from "./../Shared/Title";
 
-const ProductDetails = (props) => {
+const ProductDetails = ({ products, setProducts, item }) => {
   const { _id, image, productName, supplier, quantity, price, productDesc } =
-    props.item;
+    item;
+
+  console.log(products);
   const navigate = useNavigate();
 
   const handleSingleProduct = (id) => {
     navigate(`/inventory/${id}`);
   };
 
-  const [products, setProducts] = useState([]);
   const { id } = useParams();
 
   const DeleteProduct = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      fetch(`http://localhost:5000/inventory/${id}`, {
+      const url = `https://perfume-wirehouse.herokuapp.com/inventory/${id}`;
+      fetch(url, {
         method: "DELETE",
         headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
+          "content-type": "application/json",
         },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(products);
-          const remaining = products.filter((pd) => pd._id !== id);
-          console.log(remaining);
-          setProducts(remaining);
-        });
+        body: JSON.stringify(item),
+      });
+      const remaining = products.filter((items) => items._id !== id);
+      setProducts(remaining);
     }
   };
+
   return (
     <div className="bg-gray-100 mt-10">
       <Title title={"Manage Items"}></Title>

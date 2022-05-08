@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const SingleProduct = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
   const url = `https://perfume-wirehouse.herokuapp.com/inventory/${id}`;
@@ -13,11 +13,31 @@ const SingleProduct = () => {
       .then((data) => setProducts(data));
   }, []);
 
-  const quantityRef = useRef();
+  // Delivery Product
+  const handleDelivered = (event) => {
+    event.preventDefault();
+    const num = parseInt(products.quantity);
+    const quantity = num > 0 ? num - 1 : num;
+    const updateItem = { quantity };
+
+    // sending data for decrease data by 1
+    fetch(`https://perfume-wirehouse.herokuapp.com/inventory/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateItem),
+    })
+      .then((res) => res.json())
+      .then((data) => {});
+  };
+
+  // Update Quantity
+  const inputQuantity = useRef(0);
   const handleQuantity = (e) => {
     e.preventDefault();
-    const quantity = quantityRef.current.value;
-    const addingQuantity = parseInt(quantity) + products.quantity;
+    const addingQuantity =
+      parseInt(inputQuantity.current.value) + products.quantity;
     const quanityUpdate = { addingQuantity };
 
     // Update Products
@@ -29,10 +49,9 @@ const SingleProduct = () => {
       },
       body: JSON.stringify(quanityUpdate),
     })
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((data) => {
-        console.log("success", data);
-        setProducts(quanityUpdate);
+        setProducts(data);
         e.target.reset();
       });
   };
@@ -77,13 +96,17 @@ const SingleProduct = () => {
 
               <div>
                 <div className="inline-block align-bottom">
-                  <button className="bg-yellow-300 opacity-75 hover:opacity-100 text-yellow-900 hover:text-gray-900 rounded-full px-10 py-2 font-semibold">
+                  <button
+                    onClick={handleDelivered}
+                    className="bg-yellow-300 opacity-75 hover:opacity-100 text-yellow-900 hover:text-gray-900 rounded-full px-10 py-2 font-semibold"
+                  >
                     Delivered
                   </button>
                   <input
                     required
-                    ref={quantityRef}
                     type="number"
+                    name="quantityValue"
+                    ref={inputQuantity}
                     className="m-4 w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
                     placeholder="Quantity"
                   />
