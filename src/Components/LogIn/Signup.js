@@ -32,7 +32,7 @@ const Signup = () => {
     if (user) {
       navigate("/");
     }
-  }, [user]);
+  }, [user, navigate]);
 
   let handleError;
   if (error) {
@@ -105,7 +105,6 @@ const Signup = () => {
                       className="text-blue-600 hover:underline"
                       onClick={handleSignRoute}
                     >
-                      {" "}
                       LogIn
                     </a>
                   </p>
