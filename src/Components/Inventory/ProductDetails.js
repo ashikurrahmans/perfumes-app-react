@@ -5,7 +5,6 @@ const ProductDetails = ({ products, setProducts, item }) => {
   const { _id, image, productName, supplier, quantity, price, productDesc } =
     item;
 
-  console.log(products);
   const navigate = useNavigate();
 
   const handleSingleProduct = (id) => {
@@ -17,7 +16,8 @@ const ProductDetails = ({ products, setProducts, item }) => {
   const DeleteProduct = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      const url = `https://perfume-wirehouse.herokuapp.com/inventory/${id}`;
+      const url = `http://localhost:5000/inventory/${id}`;
+      console.log(url);
       fetch(url, {
         method: "DELETE",
         headers: {

@@ -22,8 +22,21 @@ const Login = () => {
     e.preventDefault();
     const email = emailrefs.current.value;
     const password = passwordrefs.current.value;
+    const emailPass = { email, password };
     signInWithEmailAndPassword(email, password);
     toast("Login SuccessFull!..");
+
+    fetch(`https://perfume-wirehouse.localhostapp.com/login`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(emailPass),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
 
   const handleSignUP = () => {
