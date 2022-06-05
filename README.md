@@ -1,8 +1,7 @@
 # Perfumes
 
 Here is the live website link : https://wirehouse-ee68f.web.app/
-
-This website has been creted for an assignment to show my skills. also this assignment will judge me how i improving myself each and every day. I mentoned everything how i developed this web application and what materials called stacks i use all of are mentioned below.
+This project has been created for showing to my interviwer to know about my past coding experience what i implemented in my project. I mentoned everything how i developed this web application and what materials called stacks i use all of are mentioned below.
 
 - React (Javascript frontend Library)
 - Tailwind CSS (utility first css framwork for making the design)
